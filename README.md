@@ -21,3 +21,14 @@ The filename of the output Excel file is optional (defaults to same name as xml 
 Example:
 
         $: ./ati2xl.py path/to/my/xml/file.xml -e newname.xls
+
+Missing Functionality
+---------------------
+
+This code does not extract the following sections of the Atlas.ti XML dump:
+
+* codeLinkProtos
+* codeLinks
+* hyperLinkProtos
+* memoMemoLinks
+* codeMemoLinks

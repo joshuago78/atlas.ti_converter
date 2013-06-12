@@ -47,11 +47,11 @@ class AtiXML():
         return self.root.xpath("families/codeFamilies/codeFamily")
 
     @property
-    def codelinks(self):
+    def codings(self):
         return self.root.xpath("links/objectSegmentLinks/codings/iLink")
 
     @property
-    def memolinks(self):
+    def memoings(self):
         return self.root.xpath("links/objectSegmentLinks/memoings/iLink")
 
     def writerow(self, sheet, rownum, values):
@@ -127,17 +127,17 @@ class AtiXML():
                 values = [famid, item.get('id')]
                 self.writerow(sheet=sheet, rownum=rownum, values=values)
 
-    def write_code_links(self, sheet):
+    def write_codings(self, sheet):
         headers = ['quote_id', 'code_id']
         self.writerow(sheet=sheet, rownum=0, values=headers)
-        for rownum, link in enumerate(self.codelinks, start=1):
+        for rownum, link in enumerate(self.codings, start=1):
             values = [link.get('qRef'), link.get('obj')]
             self.writerow(sheet=sheet, rownum=rownum, values=values)
 
-    def write_memo_links(self, sheet):
+    def write_memoings(self, sheet):
         headers = ['quote_id', 'memo_id']
         self.writerow(sheet=sheet, rownum=0, values=headers)
-        for rownum, link in enumerate(self.memolinks, start=1):
+        for rownum, link in enumerate(self.memoings, start=1):
             values = [link.get('qRef'), link.get('obj')]
             self.writerow(sheet=sheet, rownum=rownum, values=values)
 
@@ -168,11 +168,11 @@ class AtiXML():
         members = wkbk.add_sheet('code family members')
         self.write_code_family_members(sheet=members)
 
-        codelinks = wkbk.add_sheet('code links')
-        self.write_code_links(sheet=codelinks)
+        codings = wkbk.add_sheet('codings')
+        self.write_codings(sheet=codings)
 
-        memolinks = wkbk.add_sheet('memo links')
-        self.write_memo_links(sheet=memolinks)
+        memoings = wkbk.add_sheet('memoings')
+        self.write_memoings(sheet=memoings)
 
         wkbk.save(filename)
 
