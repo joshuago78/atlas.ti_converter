@@ -20,6 +20,14 @@ The filename of the output Excel file is optional (defaults to same name as xml 
 
 Example:
 
+        $: python at12xl.py path/to/my/xml/file.xml
+
+or 
+
+        $: python at12xl.py path/to/my/xml/file.xml -e newname.xls
+
+You can adjust the #! statement at the begining of the script to point to your Python binary so you don't have to explicitly call Python
+
         $: ./ati2xl.py path/to/my/xml/file.xml -e newname.xls
 
 Missing Functionality
